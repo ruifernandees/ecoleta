@@ -1,5 +1,4 @@
 <h1>Ecoleta</h1>
-<hr>
 <h2>Ecoleta is an application in which the user can see places with trash to collect. Created for study purposes in the event Next Level Week (https://nextlevelweek.com).</h2>
 <br>
 <h2>Used technologies:</h2>
