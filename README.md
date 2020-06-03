@@ -3,6 +3,7 @@
 <br>
 <h2>Used technologies:</h2>
 <ul>
+    <li>TypeScript</li>
     <li>Node.js (back-end)</li>
     <li>ReactJS (front-end web)</li>
     <li>React Native (front-end mobile) - soon</li>
