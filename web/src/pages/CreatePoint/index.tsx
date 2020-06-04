@@ -2,6 +2,7 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
+import { LeafletMouseEvent } from 'leaflet';
 import axios from 'axios';
 import api from '../../services/api';
 
@@ -30,8 +31,19 @@ const CreatePoint = () => {
     const [ufs, setUfs] = useState<string[]>([]);
     const [cities, setCities] = useState<string[]>([]);
 
+    const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
+
     const [selectedUf, setSelectedUf] = useState<string>('0');
-    const [selecteCity, setSelectedCity] = useState<string>('0');
+    const [selectedCity, setSelectedCity] = useState<string>('0');
+    const [selectedPosition, setSelectedPosition] = useState<[number, number]>(initialPosition);
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(position => {
+            const { latitude, longitude } = position.coords
+
+            setInitialPosition([latitude, longitude])
+        })
+    }, []);
 
     /** CALLING API */
     useEffect(() => {
@@ -73,6 +85,10 @@ const CreatePoint = () => {
         const city = event.target.value;
 
         setSelectedCity(city);
+    }
+
+    function handleMapClick(event: LeafletMouseEvent) {
+        setSelectedPosition([event.latlng.lat, event.latlng.lng]);
     }
 
     return (
@@ -128,12 +144,12 @@ const CreatePoint = () => {
                         <span>Selecione o endereço no mapa</span>
                     </legend>
 
-                    <Map center={[ -9.6634952, -35.7403231]} zoom={15}>
+                    <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
                         <TileLayer
                             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Marker position={[ -9.6634952, -35.7403231]} />
+                        <Marker position={selectedPosition} />
                     </Map>
 
                     <div className="field-group">
