@@ -5,7 +5,6 @@
 <ul>
     <li>TypeScript</li>
     <li>Node.js (back-end)</li>
-    <li>ReactJS (front-end web)</li>
-    <li>React Native (front-end mobile) - https://github.com/ruifernandees/ecoleta-mobile</li>
+    <li>ReactJS (front-end)</li>
     <li>SQLite (database)</li>
 </ul>
