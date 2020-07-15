@@ -9,3 +9,11 @@
     <li>React Native (front-end mobile) - https://github.com/ruifernandees/ecoleta-mobile</li>
     <li>SQLite (database)</li>
 </ul>
+
+<h2>React front-end</h2>
+
+<strong><p>Home:</p></strong>
+<img src='web/public/prints/home.png' />
+
+<strong><p>Create Point:</p></strong>
+<img src='web/public/prints/create-point.png' />
